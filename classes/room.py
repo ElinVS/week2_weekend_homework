@@ -3,6 +3,7 @@ class Room:
         self.name = input_name
         self.rooms_playlist = play_list
         self.guest_list = guest_list
+        self.max_capacity = 0
 
 
     def add_song_to_rooms_playlist(self,new_song):
@@ -20,6 +21,20 @@ class Room:
                 return True
         
         return False
+
+    #if lengt of list is < 3:
+       #add guest to list
+    # elif. add guest to another room
+    
+
+    # def check_max_capacity(number):
+    
+    # #add guest to room if room is full add guest to an and
+
+    #     if number >= 3:
+    #         self.guest_list.append(new_guest)
+
+
 
         
 
