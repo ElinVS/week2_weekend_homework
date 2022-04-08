@@ -11,4 +11,17 @@ class Room:
     def add_guest_to_room(self, new_guest):
         self.guest_list.append(new_guest)
 
+    def remove_guest_3_from_room(self,specific_guest):
+        self.guest_list.remove(specific_guest)
+
+    def find_song_by_title(self,song_title):
+        for song in self.rooms_playlist:
+            if song == song_title:
+                return True
+        
+        return False
+
+        
+
+
         
