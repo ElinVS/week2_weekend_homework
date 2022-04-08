@@ -26,7 +26,9 @@ class Room:
     def find_favourite_song(self, song, guest):
         for loop in self.rooms_playlist:
             if loop == song and guest:
-                return "Woho. I like this playlist!"
+                return "I love this song!"
+
+        return "I refuse to sing in this room!"
 
 
     #if lengt of list is < 3:

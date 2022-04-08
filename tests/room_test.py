@@ -7,9 +7,9 @@ from classes.song import Song
 class TestRoom(unittest.TestCase):
     def setUp(self):
         
-        self.guest_1 = ("Charlotte", 22, "Brass in pocket")
-        self.guest_2 = ("Bob", 51, "More Than This" )
-        self.guest_3 = ("Fumihiro", 36, "God save the Queen" )
+        self.guest_1 = ("Charlotte", 22, 50, "Brass in pocket")
+        self.guest_2 = ("Bob", 51, 100, "More Than This" )
+        self.guest_3 = ("Fumihiro", 36, 20, "God save the Queen" )
 
         self.song_1 = "Brass in pocket"
         self.song_2 = "More Than This"
@@ -70,8 +70,11 @@ class TestRoom(unittest.TestCase):
     #     self.assertEqual(3, self.room_1.check_max_capacity(self.room_1))
 
     def test_guests_favourite_song_in_rooms_playlist(self):
-        music_list = [self.song_1,self.song_2,self.song_3 ]
-        person_list = [self.guest_2]
-        self.room_3 = Room("Make it Santori Time", music_list, person_list)
-        self.assertEqual("Woho. I like this playlist!", self.room_3.find_favourite_song(self.song_2, self.guest_2))
+        play_list = [self.song_2,self.song_3 ]
+        guest_list = [self.guest_1,self.guest_2]
+        self.room_3 = Room("Make it Santori Time", play_list, guest_list)
+        self.assertEqual("I love this song!", self.room_3.find_favourite_song(self.song_2, self.guest_2))
+        self.assertEqual("I refuse to sing in this room!", self.room_3.find_favourite_song(self.song_1, self.guest_1))
 
+
+#Bob lend money to 
