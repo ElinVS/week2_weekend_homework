@@ -7,9 +7,9 @@ from classes.song import Song
 class TestRoom(unittest.TestCase):
     def setUp(self):
         
-        self.guest_1 = ("Charlotte", 22)
-        self.guest_2 = ("Bob", 51)
-        self.guest_3 = ("Fumihiro", 36)
+        self.guest_1 = ("Charlotte", 22, "Brass in pocket")
+        self.guest_2 = ("Bob", 51, "More Than This" )
+        self.guest_3 = ("Fumihiro", 36, "God save the Queen" )
 
         self.song_1 = "Brass in pocket"
         self.song_2 = "More Than This"
@@ -27,7 +27,8 @@ class TestRoom(unittest.TestCase):
         
 
         #if full in room 1 add guest to room 2 if also full add to room 3
-# /////////////////////////////////////////////////
+# tests starts here:
+
     def test_room_has_name(self):
         self.assertEqual("Karaoke Kan",self.room_1.name)
 
@@ -68,4 +69,9 @@ class TestRoom(unittest.TestCase):
     #     self.room_1.add_guest_to_room(self.guest_3)
     #     self.assertEqual(3, self.room_1.check_max_capacity(self.room_1))
 
+    def test_guests_favourite_song_in_rooms_playlist(self):
+        music_list = [self.song_1,self.song_2,self.song_3 ]
+        person_list = [self.guest_2]
+        self.room_3 = Room("Make it Santori Time", music_list, person_list)
+        self.assertEqual("Woho. I like this playlist!", self.room_3.find_favourite_song(self.song_2, self.guest_2))
 

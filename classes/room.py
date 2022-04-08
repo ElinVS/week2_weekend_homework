@@ -1,6 +1,6 @@
 class Room:
-    def __init__(self,input_name, play_list, guest_list):
-        self.name = input_name
+    def __init__(self,name, play_list, guest_list):
+        self.name = name
         self.rooms_playlist = play_list
         self.guest_list = guest_list
         self.max_capacity = 0
@@ -22,10 +22,17 @@ class Room:
         
         return False
 
+
+    def find_favourite_song(self, song, guest):
+        for loop in self.rooms_playlist:
+            if loop == song and guest:
+                return "Woho. I like this playlist!"
+
+
     #if lengt of list is < 3:
        #add guest to list
     # elif. add guest to another room
-    
+
 
     # def check_max_capacity(number):
     
