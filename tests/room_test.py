@@ -6,24 +6,19 @@ from src.song import Song
 class TestRoom(unittest.TestCase):
     def setUp(self):
         
-        self.guest_1 = Guest("Charlotte", 22, 50, "Brass in pocket")
-        self.guest_2 = Guest("Bob", 51, 100, "More Than This" )
-        self.guest_3 = Guest("Fumihiro", 36, 20, "God save the Queen")
-        self.guest_4 = Guest("John", 32, 70, "Lost in Kyoto")
+        self.guest_1 = Guest("Charlotte", 22, 50, "Brass in pocket", 4.00)
+        self.guest_2 = Guest("Bob", 51, 100, "More Than This", 2.00)
+        self.guest_3 = Guest("Fumihiro", 36, 20, "God save the Queen", 3.00)
+        self.guest_4 = Guest("John", 32, 70, "Lost in Kyoto", 1.00)
 
-        self.song_1 = Song("Brass in pocket")
-        self.song_2 = Song("More Than This")
-        self.song_3 = Song("God save the Queen")
+        self.song_1 = Song("Brass in pocket", 3.00)
+        self.song_2 = Song("More Than This", 2.00)
+        self.song_3 = Song("God save the Queen",4.00)
 
-        play_list_1 = []
-        guest_list_1 = []
-        self.room_1 = Room("Karaoke Kan",play_list_1, guest_list_1, 3, 30)
-
-        play_list_2 = []
-        guest_list_2 = []
-        self.room_2 = Room("Lost in Karaoke", play_list_2, guest_list_2, 4, 40)
-        
-
+        play_list = []
+        guest_list = []
+        self.room_1 = Room("Karaoke Kan",play_list, guest_list, 3, 30, 100)
+        self.room_2 = Room("Lost in Karaoke", play_list, guest_list, 4, 40, 100)
         
 ### tests starts here:
 
@@ -81,14 +76,18 @@ class TestRoom(unittest.TestCase):
     def test_guest_can_afford_entry_to_room__false(self):
         self.assertEqual(False, self.room_2.guest_can_afford_entry(self.guest_3))
 
-
     def test_guests_favourite_song_in_rooms_playlist(self):
         play_list = [self.song_2,self.song_3 ]
         guest_list = [self.guest_1,self.guest_2]
-        self.room_3 = Room("Make it Santori Time", play_list, guest_list, 5, 50)
+        self.room_3 = Room("Make it Santori Time", play_list, guest_list, 5, 50, 100)
         self.assertEqual("I love this song!", self.room_3.find_favourite_song(self.song_2, self.guest_2))
         self.assertEqual("I refuse to sing in this room!", self.room_3.find_favourite_song(self.song_1, self.guest_1))
 
+    def test_room_has_money_in_till(self):
+        self.assertEqual(100,self.room_1.till)
 
+    def test_till_has_increased(self):
+        self.room_1.increase_till(self.room_1.entry_fee)
+        self.assertEqual(130, self.room_1.till)
 
 

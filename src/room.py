@@ -1,11 +1,12 @@
 class Room:
-    def __init__(self,name, play_list, guest_list,max_capacity, entry_fee):
+    def __init__(self,name, play_list, guest_list, max_capacity, entry_fee, till):
         self.name = name
         self.rooms_playlist = play_list
         self.guest_list = guest_list
         self.max_capacity = max_capacity
         self.entry_fee = entry_fee
         self.add_to_queue = []
+        self.till = till
 
 
     def add_song_to_rooms_playlist(self,new_song):
@@ -18,7 +19,6 @@ class Room:
             self.add_to_queue.append(new_guest)
         if len(self.add_to_queue) > 0:
             return "Whilst you are waiting for a new room would you like a drink?"
-
 
     def remove_guest_3_from_room(self,specific_guest):
         self.guest_list.remove(specific_guest)
@@ -40,7 +40,8 @@ class Room:
 
         return "I refuse to sing in this room!"
 
-
+    def increase_till(self, price):
+         self.till += price
 
 
 
