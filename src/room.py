@@ -1,9 +1,11 @@
 class Room:
-    def __init__(self,name, play_list, guest_list):
+    def __init__(self,name, play_list, guest_list,max_capacity, entry_fee):
         self.name = name
         self.rooms_playlist = play_list
         self.guest_list = guest_list
-        self.max_capacity = 0
+        self.max_capacity = max_capacity
+        self.entry_fee = entry_fee
+        self.add_to_queue = []
 
 
     def add_song_to_rooms_playlist(self,new_song):
@@ -11,6 +13,12 @@ class Room:
         
     def add_guest_to_room(self, new_guest):
         self.guest_list.append(new_guest)
+
+        if len(self.guest_list) > self.max_capacity:
+            self.add_to_queue.append(new_guest)
+        if len(self.add_to_queue) > 0:
+            return "Whilst you are waiting for a new room would you like a drink?"
+
 
     def remove_guest_3_from_room(self,specific_guest):
         self.guest_list.remove(specific_guest)
@@ -22,6 +30,8 @@ class Room:
         
         return False
 
+    def guest_can_afford_entry(self,guest):
+        return guest.wallet >= self.entry_fee
 
     def find_favourite_song(self, song, guest):
         for loop in self.rooms_playlist:
@@ -31,17 +41,13 @@ class Room:
         return "I refuse to sing in this room!"
 
 
-    #if lengt of list is < 3:
-       #add guest to list
-    # elif. add guest to another room
 
 
-    # def check_max_capacity(number):
-    
-    # #add guest to room if room is full add guest to an and
 
-    #     if number >= 3:
-    #         self.guest_list.append(new_guest)
+
+
+
+
 
 
 

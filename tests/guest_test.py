@@ -1,11 +1,12 @@
 import unittest
-from classes.guest import Guest
-from classes.room import Room
-from classes.song import Song
+from src.guest import Guest
+from src.room import Room
+from src.song import Song
 
 class TestGuest(unittest.TestCase):
     def setUp(self):
         self.guest_1 = Guest("Bob", 51, 100, "More Than This" )
+        
 
 # tests starts here:
 
